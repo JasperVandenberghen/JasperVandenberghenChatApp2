@@ -13,15 +13,15 @@ public class ChangeStatus extends RequestHandler {
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
         Person user = (Person) request.getSession().getAttribute("user");
-        String customStatus = request.getParameter("customStatus");
+        String changeStatus = request.getParameter("changeStatus");
         List<String> errors = new ArrayList<String>();
         List<Person> friends = user.getFriends();
 
         request.setAttribute("friends", friends);
 
         if(user != null){
-        if(customStatus != null){
-            user.setStatus(customStatus);
+        if(changeStatus != null){
+            user.setStatus(changeStatus);
         } else {
                 errors.add("status mag niet leeg zijn");
         }} else {

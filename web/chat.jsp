@@ -9,7 +9,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Chat" />
 </jsp:include>
-    <script src="js/friends.js"></script>
+
 </head>
 <body>
 <jsp:include page="header.jsp">
@@ -25,36 +25,44 @@
             </ul>
         </div>
     </c:if>
-        <p>Status: ${user.getCurrentStatus()}</p>
+    <div id="currentStatus">
+        <p> Status: ${status}</p>
+    </div>
 
     <c:if test="${user != null}">
     <table>
-
+            <tbody>
+                <c:forEach var="friend" items="${friends}">
+                    <tr>
+                        <td> ${friend.getFirstName()}</td>
+                        <td> ${friend.getCurrentStatus()}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
     </table></c:if>
 
 
 
-    <form method="post" action="Controller?action=ChangeStatus">
-
-        <label for="customStatus">Change status </label>
-        <input type="text" id="customStatus" name="customStatus" value="Away">
-        <input type="submit" id="change" value="Change">
 
 
-    </form>
+        <label for="changeStatus">Change status </label>
+        <input type="text" id="changeStatus" name="changeStatus" value="Away">
+        <input type="submit" id="changeButton" value="Change">
 
-    <form method="post" action="Controller?action=AddFriend">
+
+
 
         <label for="addFriend">Add friend </label>
         <input type="email" id="addFriend" name="addFriend" value="user@email.com">
-        <input type="submit" id="add" value="Add">
+        <input type="submit" id="addButton" value="Add">
 
-    </form>
+
 
 </main>
 
 <jsp:include page="footer.jsp">
     <jsp:param name="title" value="Home" />
 </jsp:include>
+<script src="js/chat.js"></script>
 </body>
 </html>
