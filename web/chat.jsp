@@ -45,14 +45,14 @@
 
 
 
-        <label for="changeStatus">Change status </label>
+        <label for="changeStatus">Change status </label><br>
         <input type="text" id="changeStatus" name="changeStatus">
-        <input type="submit" id="changeButton" value="Change">
+        <input type="submit" id="changeButton" value="Change"><br>
 
 
 
 
-        <label for="addFriend">Add friend </label>
+        <label for="addFriend">Add friend </label><br>
         <input type="email" id="addFriend" name="addFriend" value="user@email.com">
         <input type="submit" id="addButton" value="Add">
 
