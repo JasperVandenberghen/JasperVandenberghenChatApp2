@@ -28,9 +28,9 @@ function addFriend(){
 
 function changeStatus() {
 
-    var status = document.getElementById("status").value;
-    document.getElementById("status").value = "";
+    var status = document.getElementById("changeStatus").value;
     nieuweStatus.open("POST", "Controller?action=ChangeStatus", true);
+    console.log(status)
     nieuweStatus.send(status);
     console.log("here");
     getNewStatus();

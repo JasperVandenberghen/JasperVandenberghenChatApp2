@@ -46,7 +46,7 @@
 
 
         <label for="changeStatus">Change status </label>
-        <input type="text" id="changeStatus" name="changeStatus" value="Away">
+        <input type="text" id="changeStatus" name="changeStatus">
         <input type="submit" id="changeButton" value="Change">
 
 

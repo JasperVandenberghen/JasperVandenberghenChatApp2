@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChangeStatus extends RequestHandler {
+public class ChangeStatus extends AsyncHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         Person user = (Person) request.getSession().getAttribute("user");
@@ -30,7 +30,7 @@ public class ChangeStatus extends RequestHandler {
 
         request.setAttribute("errors", errors);
 
-        return "";
+        return "chat.jsp";
 
 
     }
