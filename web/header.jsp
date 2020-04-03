@@ -1,8 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <header role="banner">
-<img alt="Books" src="images/books.jpg">
-<h1><span>Chat App</span></h1>
+<img alt="Books" src="images/chat.png">
+
 <nav>
 <ul>
 
