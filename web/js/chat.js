@@ -19,10 +19,11 @@ function getFriendList(){
 
 function addFriend(){
     var friendname = document.getElementById("addFriend").value;
-    document.getElementById("addFriend").value = "";
     console.log(friendname);
-    newFriend.open("POST", "Controller?action=AddFriend",true);
-    newFriend.send(friendname);
+    newFriend.open("POST", "Controller?",true);
+    var information =  encodeURIComponent(friendname);
+    newFriend.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    newFriend.send("addFriend="+information);
 }
 
 
@@ -30,8 +31,10 @@ function changeStatus() {
 
     var status = document.getElementById("changeStatus").value;
     nieuweStatus.open("POST", "Controller?action=ChangeStatus", true);
-    console.log(status)
-    nieuweStatus.send(status);
+    var information =  encodeURIComponent(status);
+    console.log(information)
+    nieuweStatus.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    nieuweStatus.send("changeStatus="+information);
     console.log("here");
     getNewStatus();
 }
