@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class Home extends RequestHandler {
+public class Home extends SyncHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         return "index.jsp";

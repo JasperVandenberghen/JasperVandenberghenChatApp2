@@ -21,7 +21,7 @@ function addFriend(){
     var friendname = document.getElementById("addFriend").value;
     document.getElementById("addFriend").value = "";
     console.log(friendname);
-    newFriend.open("POST", "/Controller?action=AddFriend",true);
+    newFriend.open("POST", "Controller?action=AddFriend",true);
     newFriend.send(friendname);
 }
 
