@@ -12,7 +12,7 @@ var changeStatusButton = document.getElementById("changeButton");
 changeStatusButton.onclick = changeStatus;
 
 function getFriendList(){
-    friendListXML.open("GET", "/FriendsController", true);
+    friendListXML.open("GET", "Controller?action=ShowFriends", true);
     friendListXML.onreadystatechange = getData;
     friendListXML.send();
 }
@@ -20,10 +20,11 @@ function getFriendList(){
 function addFriend(){
     var friendname = document.getElementById("addFriend").value;
     console.log(friendname);
-    newFriend.open("POST", "Controller?",true);
+    newFriend.open("POST", "Controller?action=AddFriend",true);
     var information =  encodeURIComponent(friendname);
     newFriend.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     newFriend.send("addFriend="+information);
+    getFriendList();
 }
 
 
@@ -63,6 +64,7 @@ function showStatus() {
 function getData() {
     if(friendListXML.status === 200){
         if(friendListXML.readyState === 4){
+            console.log(friendListXML.responseText);
             var serverResponse = JSON.parse(friendListXML.responseText);
             var tbody = document.getElementsByTagName("TBODY")[0];
             console.log(serverResponse);
@@ -77,13 +79,13 @@ function getData() {
                 tdUsername.innerText = serverResponse[i].firstName;
                 console.log(serverResponse.hasOwnProperty("firstName"));
                 var tdStatus = document.createElement("TD");
-                tdStatus.innerText = serverResponse[i].status;
+                tdStatus.innerText = serverResponse[i].currentStatus;
 
                 row.appendChild(tdUsername);
                 row.appendChild(tdStatus);
                 tbody.appendChild(row);
             }
-            setTimeout(getFriendList, 2000);
+            setTimeout(getFriendList, 20000);
         }
     }
 }
