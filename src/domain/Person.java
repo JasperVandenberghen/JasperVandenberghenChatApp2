@@ -19,19 +19,19 @@ public class Person {
 	private String lastName;
 	private Role role;
 	private String currentStatus = "Online";
-	private List<Person> friends;
+	private List<Person> friends = new ArrayList<>();
 
 
 
 
 	public Person(String userId, String password, String firstName,
-				  String lastName, Role role) {
+				  String lastName, Role role, List<Person> friends) {
 		setUserId(userId);
 		setHashedPassword(password);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
-		friends = new ArrayList<>();
+		this.friends = friends;
 
 	}
 
