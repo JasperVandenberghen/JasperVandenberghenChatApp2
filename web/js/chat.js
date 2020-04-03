@@ -14,7 +14,7 @@ changeStatusButton.onclick = changeStatus;
 function getFriendList(){
     friendListXML.open("GET", "Controller?action=ShowFriends", true);
     friendListXML.onreadystatechange = getData;
-    friendListXML.send();
+    friendListXML.send(null);
 }
 
 function addFriend(){
@@ -32,8 +32,8 @@ function changeStatus() {
 
     var status = document.getElementById("changeStatus").value;
     nieuweStatus.open("POST", "Controller?action=ChangeStatus", true);
-    var information =  encodeURIComponent(status);
-    console.log(information)
+    var information = encodeURIComponent(status);
+    console.log(information);
     nieuweStatus.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     nieuweStatus.send("changeStatus="+information);
     console.log("here");
