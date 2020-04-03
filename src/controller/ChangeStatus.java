@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ChangeStatus extends RequestHandler {
     @Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         Person user = (Person) request.getSession().getAttribute("user");
         String changeStatus = request.getParameter("changeStatus");
         List<String> errors = new ArrayList<String>();
@@ -30,11 +30,7 @@ public class ChangeStatus extends RequestHandler {
 
         request.setAttribute("errors", errors);
 
-        try {
-            request.getRequestDispatcher("chat.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
+        return "";
 
 
     }

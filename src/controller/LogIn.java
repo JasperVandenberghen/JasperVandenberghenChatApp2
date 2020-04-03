@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import domain.Person;
 import domain.PersonService;
 
-public class LogIn extends RequestHandler {
+public class LogIn extends SyncHandler {
 
 	@Override
-	public void handleRequest(HttpServletRequest request,
+	public String handleRequest(HttpServletRequest request,
 			HttpServletResponse response) {
 		List<String> errors = new ArrayList<String>();
 		
@@ -43,11 +44,9 @@ public class LogIn extends RequestHandler {
 			request.setAttribute("errors", errors);
 		}
 
-		try {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		} catch (ServletException | IOException e) {
-			e.printStackTrace();
-		}
+
+			return "index.jsp";
+
 	}
 	
 	private void createSession(Person person, HttpServletRequest request,

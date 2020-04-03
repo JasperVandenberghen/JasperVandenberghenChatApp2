@@ -7,12 +7,7 @@ import java.io.IOException;
 
 public class Home extends RequestHandler {
     @Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
-
-        try {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+        return "index.jsp";
     }
 }

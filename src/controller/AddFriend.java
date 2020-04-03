@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class AddFriend extends RequestHandler{
+public class AddFriend extends AsyncHandler{
     @Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("addFriend");
         Person person = getPersonService().getPerson(email);
         Person user = (Person) request.getSession().getAttribute("user");
@@ -20,10 +20,6 @@ public class AddFriend extends RequestHandler{
 
         request.setAttribute("friends", friends);
 
-        try {
-            request.getRequestDispatcher("chat.jsp").forward(request, response);
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
-        }
+       return "chat.jsp";
     }
 }

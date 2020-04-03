@@ -25,8 +25,8 @@
             </ul>
         </div>
     </c:if>
-    <div id="currentStatus">
-        <p> Status: ${status}</p>
+    <div id="status">
+
     </div>
 
     <c:if test="${user != null}">

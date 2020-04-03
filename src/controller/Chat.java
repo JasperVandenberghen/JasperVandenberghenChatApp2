@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chat extends RequestHandler {
+public class Chat extends SyncHandler {
     @Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         Person user = (Person) request.getSession().getAttribute("user");
         List<String> errors = new ArrayList<String>();
         List<Person> friends = user.getFriends();
@@ -30,10 +30,6 @@ public class Chat extends RequestHandler {
             request.setAttribute("errors", errors);
 
 
-        try {
-            request.getRequestDispatcher("chat.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
+        return "chat.jsp";
     }
 }

@@ -6,18 +6,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class LogOut extends RequestHandler {
+public class LogOut extends SyncHandler {
 
 	@Override
-	public void handleRequest(HttpServletRequest request,
+	public String handleRequest(HttpServletRequest request,
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		try {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		} catch (ServletException | IOException e) {
-			e.printStackTrace();
-		}
+		return "index.jsp";
 	}
 	
 }

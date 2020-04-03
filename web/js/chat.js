@@ -8,7 +8,7 @@ var newFriend = new XMLHttpRequest();
 var addFriendButton = document.getElementById("addButton");
 addFriendButton.onclick = addFriend;
 
-var changeStatusButton = document.getElementById("changeStatus");
+var changeStatusButton = document.getElementById("changeButton");
 changeStatusButton.onclick = changeStatus;
 
 function getFriendList(){
@@ -21,24 +21,23 @@ function addFriend(){
     var friendname = document.getElementById("addFriend").value;
     document.getElementById("addFriend").value = "";
     console.log(friendname);
-    var emailId = "friend=" + encodeURIComponent(friendname);
-    console.log(emailId);
     newFriend.open("POST", "/Controller?action=AddFriend",true);
-    newFriend.send(emailId);
+    newFriend.send(friendname);
 }
 
 
 function changeStatus() {
-    var status = document.getElementById("currentStatus").value;
-    document.getElementById("currentStatus").value = "";
-    var infoStatus = "Status:" + encodeURIComponent(status);
-    nieuweStatus.open("POST", "ChatAppOp_war_exploded/Controller?action=ChangeStatus", true);
-    nieuweStatus.send(infoStatus);
+
+    var status = document.getElementById("status").value;
+    document.getElementById("status").value = "";
+    nieuweStatus.open("POST", "Controller?action=ChangeStatus", true);
+    nieuweStatus.send(status);
+    console.log("here");
     getNewStatus();
 }
 
 function getNewStatus() {
-    getStatus.open("GET", "ChatAppOp_war_exploded/Controller?action=ShowStatus", true);
+    getStatus.open("GET", "Controller?action=ShowStatus", true);
     getStatus.onreadystatechange = showStatus;
     getStatus.send(null);
 }
@@ -46,10 +45,10 @@ function getNewStatus() {
 function showStatus() {
     if(getStatus.readyState === 4){
         if(getStatus.status === 200){
-            var response = JSON.parse(getStatus.responseText);
-            var statusXML = response.status;
+            var response = getStatus.responseText;
+
             var statusDiv = document.getElementById("status");
-            statusDiv.innerText = statusXML;
+            statusDiv.innerText = response;
         }
     }
 }

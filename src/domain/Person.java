@@ -25,7 +25,7 @@ public class Person {
 
 
 	public Person(String userId, String password, String firstName,
-				  String lastName, Role role) {
+				  String lastName, Role role, List<Person> friends) {
 		setUserId(userId);
 		setHashedPassword(password);
 		setFirstName(firstName);

@@ -11,7 +11,7 @@ public abstract class RequestHandler {
 	
 	private PersonService personService;
 	
-	public abstract void handleRequest (HttpServletRequest request, HttpServletResponse response);
+	public abstract String handleRequest (HttpServletRequest request, HttpServletResponse response);
 	
 	public void setModel (PersonService personService) {
 		this.personService = personService;
